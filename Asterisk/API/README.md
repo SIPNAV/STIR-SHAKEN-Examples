@@ -25,7 +25,7 @@ Add the Following Dialplan
      same => n,Set(SS_ATTEST=${IF($["${ARG4}" = ""]?A:${ARG4})})
      same => n,NoOp(Build request data)
      same => n,Set(SS_DATA=api_key=${SS_APIKEY}&signingRequest[attest]=${SS_ATTEST}&signingRequest[dest][tn]=${SS_TO}&signingRequest[orig][tn]=${SS_FROM}&signingRequest[origid]=${SS_ORIGID}&signingRequest[iat]=${EPOCH})
-     same => n,Set(__CURL_RESULT=${CURL(https://snapi.sipnav.net/api/,${SS_DATA})})
+     same => n,Set(__CURL_RESULT=${CURL(https://ssapi.sipnav.net/api/,${SS_DATA})})
      same => n,Set(__SS_IDENTITY=${JSON_DECODE(CURL_RESULT,signingResponse.identity)})
      same => n,Set(__SS_ERROR=${JSON_DECODE(CURL_RESULT,message)})
      same => n,Return()
